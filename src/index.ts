@@ -31,7 +31,7 @@ app.listen(3000, () => {
 async function querySefaz(cnpj: string) {
   const { data } = await axios({
     method: "POST",
-    url: "https://www.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/result.asp",
+    url: "https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/result.asp",
     data: {
       CGC: cnpj,
       sefp: "1",
@@ -41,7 +41,7 @@ async function querySefaz(cnpj: string) {
       IE: "",
     },
     headers: {
-      Host: "www.sefaz.ba.gov.br",
+      // Host: "www.sefaz.ba.gov.br",
       // "Content-Length": "58",
       "Content-Type": "application/x-www-form-urlencoded",
     },
@@ -95,7 +95,7 @@ async function QueryCnpjBiz(cnpj: string) {
   const { data } = await axios.get(`https://cnpj.biz/${cnpj}`);
   const $ = await cheerio.load(data);
 
-  $(".col-left")
+  $(".column-1")
     .children()
     .each((i, el) => {
       if (el.name != "script") {
